@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:title" content="Wyxnn - Software Dev • Discord Ops • Cybersecurity">
+    <meta property="og:description" content="Check out my work">
+    <meta property="og:image" content="https://yourname.github.io/banner-preview.png">
+    <meta name="theme-color" content="#9d4edd">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyxnn | Software Dev • Discord Ops • Cybersecurity</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header class="top-bar">
+    <nav class="nav-container">
+        <div class="logo">WYXNN</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#pillars">Specializations</a></li>
+            <li><a href="#skills">Proficiencies</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#operations">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+                <button id="mode-btn" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                 </button>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="banner" id="home">
+        <div class="banner-content">
+            <div class="status"><span class="pulse-dot"></span> System Status: Online</div>
+            <h1><span class="accent-color">Wyxnn</span></h1>
+            <h2><span id="typing-text"></span></h2>
+                
+            <div class="quote-container">
+                <span class="hero-quote" id="random-quote">"On the days you have only 40%, and you give 40%, you gave 100%."</span>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 8px;">
+                        <span class="quote-author" id="random-author">— Jim Kwik</span>
+                        <button id="refresh-quote" title="New Quote" style="background:none; border:none; color:var(--purp); cursor:pointer; font-size:0.8rem; transition:0.3s;">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+            </div>
+                <div class="banner-btns">
+                    <a href="#projects" class="btn-primary">Technical Portfolio</a>
+                    <a href="#operations" class="btn-secondary">Experience</a>
+                </div>
+        </div>
+            <div class="banner-visual">
+                <div class="image-mask">
+                    <img src="wyxnnOCCopy.png" alt="Wyxnn Profile">
+                </div>
+            </div>
+    </section>
+
+    <section class="section-pad" id="about">
+        <div class="about-container reveal">
+            <div class="about-text">
+                <h3 class="section-title" style="text-align: left; margin-bottom: 20px;">Who Am I?</h3>
+                <p>
+                    I am a <strong>Software Developer</strong> and <strong>Systems Auditor</strong> passionate about building secure, high-performance environments. 
+                    My journey started with a curiosity for games and websites when I was younger which evolved into a deep interest in tech. Over the past few years, I've honed my skills in <strong>Java development</strong>, focusing on creating scalable backends that remain 
+                    stable and secure under pressure. I later shifted my attention to <strong>Cybersecurity</strong> when my parents were victims of identity theft, which motivated me to understand system vulnerabilities and protection strategies.
+                </p>
+                <p style="margin-top: 15px;">
+                    When I'm not coding/learning, I'm usually playing games, interacting with communities or just living life. 
+                    My goal is to continue growing as an engineer while 
+                    looking for new challenges that push my technical boundaries. Whether it's 
+                    optimizing a backend or auditing a network, I strive for <strong>clean code</strong> and 
+                    <strong>meaningful results</strong> in everything I do.
+                </p>
+            </div>
+            <div class="about-stats-mini">
+                <div class="stat-box">
+                    <span class="stat-num">3+</span>
+                    <span class="stat-desc">Years Coding</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">∞</span>
+                    <span class="stat-desc">Curiosity & Logic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        
+
+    <section class="section-pad" id="pillars">
+        <h3 class="section-title">Specializations</h3>
+            <div class="box-grid">
+                <div class="card reveal">
+                    <div class="icon-lg"><i class="fa-solid fa-code"></i></div>
+                    <h3>Development</h3>
+                    <p>Engineering robust backends in <strong>Java</strong> and <strong>Python</strong>. Expert in automation and system-level logic.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="icon-lg"><i class="fa-brands fa-discord"></i></div>
+                    <h3>Management</h3>
+                    <p>Operations Staff for <strong>1M+ members</strong>. Directing administrative workflows for multi-billion visit titles.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="icon-lg"><i class="fa-solid fa-user-secret"></i></div>
+                    <h3>Cybersecurity</h3>
+                    <p>Applying <strong>Red Team</strong> methodologies to audit software integrity and Linux-based infrastructure.</p>
+                </div>
+            </div>
+    </section>
+
+    <section class="metrics reveal">
+        <div class="metric-item">
+            <span class="metric-value">35k+</span> 
+            <span class="metric-label">Moderation Actions</span>
+        </div>
+        <div class="metric-item">
+            <span class="metric-value">7+</span>
+            <span class="metric-label">Projects Completed</span>
+        </div>
+        <div class="metric-item">
+            <span class="metric-value">18+ Audits</span>
+            <span class="metric-label">Vulnerability Assessments</span>
+        </div>
+    </section>
+
+    <section class="section-pad" id="skills">
+        <h3 class="section-title">Technical Proficiencies</h3>
+        <div class="box-grid">
+
+            <div class="card reveal">
+                <div class="icon-lg">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="tech-lang-img" alt="Java">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tech-lang-img" alt="Python">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" class="tech-lang-img" alt="C++">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" class="tech-lang-img" alt="C#">
+                </div>
+                <h4>Languages & Logic</h4>
+                <div class="tags">
+                    <span>Java (Advanced)</span>
+                    <span>Python</span>
+                    <span>C# / C++</span>
+                    <span>Luau</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
+
+            <div class="card reveal">
+                <div class="icon-lg">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="tech-lang-img" alt="HTML">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="tech-lang-img" alt="CSS">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="tech-lang-img" alt="SQL">
+                </div>
+                <h4>Web & Data Structures</h4>
+                <div class="tags">
+                    <span>HTML & CSS</span>
+                    <span>SQL</span>
+                    <span>JSON & XML</span>
+                    <span>REST APIs</span>
+                </div>
+            </div>
+
+            <div class="card reveal">
+                    <div class="icon-lg">
+                    <i class="fa-solid fa-terminal" style="font-size: 30px; margin-right: 10px; color: var(--purp);"></i>
+                    <i class="fa-solid fa-user-ninja" style="font-size: 30px; color: var(--purp);"></i>
+                    </div>
+                <h4>Systems & Scripting</h4>
+                    <div class="tags">
+                        <span>Bash Scripting</span>
+                        <span>Linux (Ubuntu/Debian)</span>
+                        <span>Malware Analysis</span>
+                        <span>Nmap Auditing</span>
+                    </div>
+            </div>
+        </div>
+
+        <div class="focus-note reveal">
+            <p><i class="fa-solid fa-bullseye"></i>Currently mastering <strong>C++ Systems Logic</strong> and <strong>AI Integration</strong>.</p>
+        </div>
+    </section>
+
+    <section class="section-pad" id="projects">
+        <h3 class="section-title">Projects & Deliverables</h3>
+        <div class="box-grid">
+            
+            <div class="card reveal">
+                <div class="icon-lg"><i class="fa-solid fa-robot"></i></div>
+                <h4>EquinoxBot</h4>
+                <p>Java-based infrastructure designed for high-concurrency management and secure automation. Integrated real-time data processing to manage thousands of concurrent staff actions across multiple servers.</p>
+                <div class="tags"><span>Java</span><span>Systems Architecture</span></div>
+            </div>
+
+            <div class="card reveal">
+                <div class="icon-lg"><i class="fa-solid fa-virus-slash"></i></div>
+                <h4>Malware Analysis Sandbox</h4>
+                <p>Developed an isolated environment for safe binary execution. Utilized virtualization and system-call monitoring to analyze behavior and network traffic of suspicious files without compromising the host.</p>
+                <div class="tags"><span>Bash</span><span>Network Security</span></div>
+            </div>
+
+            <div class="card reveal">
+                <div class="icon-lg"><i class="fa-solid fa-cart-shopping"></i></div>
+                <h4>E-commerce Backend</h4>
+                <p>Engineered a scalable server-side architecture for digital commerce. Implemented secure user authentication, inventory management logic, and transactional database integrity.</p>
+                <div class="tags"><span>Luau</span><span>Backend Logic</span></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-pad" id="operations">
+        <h3 class="section-title">Discord Management</h3>
+        <div class="box-grid">
+            <div class="card reveal">
+                <span class="badge">Senior Moderator</span>
+                <img src="C:\Users\user\Documents\Portfolio\deadrailsmainlogo.png" alt="RCM" class="server-logo">
+                <h4>RCM Games: Dead Rails</h4>
+                <div class="role-stats">
+                    <span><i class="fa-solid fa-users"></i> 790k+</span>
+                    <span><i class="fa-solid fa-bolt"></i> 5.8B Visits</span>
+                </div>
+                <p>Managing large-scale moderation teams and security protocols for a global audience.</p>
+            </div>
+            <div class="card reveal">
+                <span class="badge">Head of Admininistration</span>
+                <img src="C:\Users\user\Documents\Portfolio\Humankind_3_Icon.png" alt="Humankind" class="server-logo">
+                <h4>Humankind Studios</h4>
+                <div class="role-stats">
+                    <span><i class="fa-solid fa-users"></i> 5k+</span>
+                    <span><i class="fa-solid fa-bolt"></i> 2.1M Visits</span>
+                </div>
+                <p>Directing studio-community operations and administrative strategy.</p>
+            </div>
+            <div class="card reveal">
+                <span class="badge">Trial Moderator</span>
+                <img src="C:\Users\user\Documents\Portfolio\AACMainLogo.png" alt="AAC" class="server-logo">
+                <h4>Regicide Studios: AAC</h4>
+                <div class="role-stats">
+                    <span><i class="fa-solid fa-users"></i> 50k+</span>
+                    <span><i class="fa-solid fa-bolt"></i> 9.6M Visits</span>
+                </div>
+                <p>Facilitating safety and engagement for the AAC community.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad" id="contact">
+        <div class="contact-box reveal">
+            <h3 class="section-title" style="margin-bottom:20px;">Contact Me</h3>
+                
+        <div class="social-links">
+                <button class="social-tag discord" id="copy-discord" data-username="Wyxn">
+                    <i class="fa-brands fa-discord"></i> 
+                    <span id="discord-text">Discord</span>
+                    <span class="tooltip" id="discord-tooltip">Copied!</span>
+                </button>
+                <a href="https://roblox.com/users/91469810" class="social-tag roblox">
+                <img src="https://cdn.simpleicons.org/roblox/white" alt="Roblox" style="width: 18px; height: 18px; margin-right: 8px; vertical-align: middle;"> Roblox</a>
+            <form action="https://formspree.io/f/mqekbdby" method="POST" class="contact-form">
+                <div class="input-row">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <textarea name="message" placeholder="Message/Project Inquiry" rows="4" required></textarea>
+                <button type="submit" class="btn-send" id="submit-btn">
+                    <span id="btn-text">Send Message</span>
+                    <i class="fas fa-spinner fa-spin" id="btn-loader" style="display: none;"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
+
+    <footer class="footer-simple">
+        <p>&copy; 2025 Wyxnn | Development • Management • Cybersecurity</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
