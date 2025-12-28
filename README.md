@@ -27,12 +27,6 @@ This repository contains the source code for my personal portfolio. It is design
 * **Hosting:** GitHub Pages
 * **Design:** Purple Asthetic matching my OC Art
 
-## Structure
-* `index.html` - Core structure
-* `style.css` - Custom styling with CSS variables and reveal animations.
-* `script.js` - Logic for theme toggling, typing effects, and interaction.
-* `images/` - Images and media.
-
 ---
 <p align="center">
   <i>"Integrity is doing the right thing, even when no one is watching."</i>
