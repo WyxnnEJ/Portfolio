@@ -21,13 +21,13 @@ This repository contains the source code for my personal portfolio. It is design
 ## Tech Stack
 * **Frontend:** HTML5, CSS3, JavaScript (ES6+)
 * **Hosting:** GitHub Pages
-* **Design:** Dark Souls inspired "Dark/Purple" aesthetic
+* **Design:** Purple Asthetic matching my OC Art
 
 ## Structure
-* `index.html` - Core structure and SEO metadata.
+* `index.html` - Core structure
 * `style.css` - Custom styling with CSS variables and reveal animations.
 * `script.js` - Logic for theme toggling, typing effects, and interaction.
-* `images/` - Optimized images and media.
+* `images/` - Images and media.
 
 ---
 <p align="center">
