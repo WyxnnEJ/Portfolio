@@ -158,19 +158,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Form Handling ---
+   // --- Form Handling ---
     const contactForm = document.querySelector('.contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnLoader = document.getElementById('btn-loader');
+
     if (contactForm) {
-        contactForm.addEventListener('submit', function() {
-            const submitBtn = document.getElementById('submit-btn');
-            const btnText = document.getElementById('btn-text');
-            const btnLoader = document.getElementById('btn-loader');
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); 
 
             submitBtn.disabled = true;
             submitBtn.style.opacity = "0.7";
             submitBtn.style.cursor = "not-allowed";
-            btnText.style.display = "none";
-            btnLoader.style.display = "inline-block";
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'inline-block';
+
+            const formData = new FormData(contactForm);
+
+            try {
+            
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                
+                    contactForm.reset();
+                    btnText.textContent = "Message Sent! ✓";
+                    btnText.style.display = 'inline-block';
+                    btnLoader.style.display = 'none';
+                    
+                    submitBtn.style.background = "#2ecc71";
+            
+                    setTimeout(() => {
+                        btnText.textContent = "Send Message";
+                        submitBtn.style.background = ""; 
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = "1";
+                        submitBtn.style.cursor = "pointer";
+                    }, 5000);
+
+                } else {
+                    throw new Error('Failed');
+                }
+            } catch (error) {
+
+                btnText.textContent = "Error! Try again.";
+                btnText.style.display = 'inline-block';
+                btnLoader.style.display = 'none';
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
+            }
         });
     }
 });

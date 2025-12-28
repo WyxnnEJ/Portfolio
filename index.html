@@ -20,7 +20,7 @@
             <li><a href="#pillars">Specializations</a></li>
             <li><a href="#skills">Proficiencies</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#operations">Experience</a></li>
+            <li><a href="#operations">Management</a></li>
             <li><a href="#contact">Contact</a></li>
             <li>
                 <button id="mode-btn" aria-label="Toggle Dark Mode">
@@ -49,7 +49,7 @@
             </div>
                 <div class="banner-btns">
                     <a href="#projects" class="btn-primary">Technical Portfolio</a>
-                    <a href="#operations" class="btn-secondary">Experience</a>
+                    <a href="#operations" class="btn-secondary">Discord Management</a>
                 </div>
         </div>
             <div class="banner-visual">
@@ -216,7 +216,7 @@
         <div class="box-grid">
             <div class="card reveal">
                 <span class="badge">Senior Moderator</span>
-                <img src="images/HumankindGroup.png" alt="RCM" class="server-logo">
+                <img src="images/RCMGames.png" alt="RCM" class="server-logo">
                 <h4>RCM Games: Dead Rails</h4>
                 <div class="role-stats">
                     <span><i class="fa-solid fa-users"></i> 790k+</span>
@@ -259,17 +259,41 @@
                 </button>
                 <a href="https://roblox.com/users/91469810" class="social-tag roblox">
                 <img src="https://cdn.simpleicons.org/roblox/white" alt="Roblox" style="width: 18px; height: 18px; margin-right: 8px; vertical-align: middle;"> Roblox</a>
-            <form action="https://formspree.io/f/mqekbdby" method="POST" class="contact-form">
-                <div class="input-row">
-                    <input type="text" name="name" placeholder="Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
-                <textarea name="message" placeholder="Message/Project Inquiry" rows="4" required></textarea>
-                <button type="submit" class="btn-send" id="submit-btn">
-                    <span id="btn-text">Send Message</span>
-                    <i class="fas fa-spinner fa-spin" id="btn-loader" style="display: none;"></i>
-                </button>
-            </form>
+                <form action="https://formspree.io/f/mqekbdby" method="POST" class="contact-form">
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name <span class="required-star">*</span></label>
+                            <input type="text" name="name" id="name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email <span class="required-star">*</span></label>
+                            <input type="email" name="email" id="email" placeholder="Email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea name="message" id="message" placeholder="Message/Project Inquiry" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inquiry-type" class="form-label">I'm looking for: <span class="required-star">*</span></label>
+                        <select name="service" id="inquiry-type" class="contact-select" required>
+                            <option value="" disabled selected>Select an option...</option>
+                            <option value="web-app">Web App</option>
+                            <option value="website">Website</option>
+                            <option value="discord-bot">Discord Bot</option>
+                            <option value="game-programming">Game Programming</option>
+                            <option value="tools-automation">Tools & Automation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-send" id="submit-btn">
+                        <span id="btn-text">Send Message</span>
+                        <i class="fas fa-spinner fa-spin" id="btn-loader" style="display: none;"></i>
+                    </button>
+                </form> 
         </div>
     </section>
 </main>
