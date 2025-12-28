@@ -265,6 +265,7 @@
                             <label for="name" class="form-label">Name <span class="required-star">*</span></label>
                             <input type="text" name="name" id="name" placeholder="Name" required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="email" class="form-label">Email <span class="required-star">*</span></label>
                             <input type="email" name="email" id="email" placeholder="Email" required>
@@ -272,8 +273,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea name="message" id="message" placeholder="Message/Project Inquiry" rows="4"></textarea>
+                        <textarea name="message" placeholder="Message/Project Inquiry" rows="4" required></textarea>
                     </div>
 
                     <div class="form-group">
@@ -293,7 +293,7 @@
                         <span id="btn-text">Send Message</span>
                         <i class="fas fa-spinner fa-spin" id="btn-loader" style="display: none;"></i>
                     </button>
-                </form> 
+                </form>
         </div>
     </section>
 </main>
