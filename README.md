@@ -1,2 +1,33 @@
-# Portfolio
-Personal portfolio website showcasing projects and infrastructure management experience.
+# Portfolio | WyxnnEJ
+<p align="center">
+  <img src="https://img.shields.io/github/license/WyxnnEJ/Portfolio?color=9D4EDD&style=for-the-badge" alt="License" />
+  <img src="https://img.shields.io/github/stars/WyxnnEJ/Portfolio?color=9D4EDD&style=for-the-badge" alt="Stars" />
+</p>
+
+<p align="center">
+  <img src="https://media.tenor.com/lcrQBLljnNcAAAAC/dark-souls-knight.gif" width="100%" />
+</p>
+
+## Live View/Demo
+**[Click here to view my live portfolio](https://WyxnnEJ.github.io/Portfolio/)**
+
+---
+
+## Project Overview
+This repository contains the source code for my personal portfolio. It is designed to showcase a responsive hub that displays my expertise in software development and system auditing.
+
+### Key Features:
+* **Dynamic Content:** A custom-built JavaScript quote engine and typing animation.
+* **Dark Mode Toggle:** Integrated local storage to remember user theme preferences.
+* **Responsive Architecture:** Fully optimized for mobile, tablet, and desktop views.
+* **Clean Logic:** Organized folder structure for assets and scripts.
+
+## Tech Stack
+* **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+* **Hosting:** GitHub Pages
+* **Design:** Purple Asthetic matching my OC Art
+
+---
+<p align="center">
+  <i>"Integrity is doing the right thing, even when no one is watching."</i>
+</p>
