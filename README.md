@@ -1,5 +1,9 @@
 # Portfolio | WyxnnEJ
-This project is licensed under the MIT License © 2025 Wyxnn.
+<p align="center">
+  <img src="https://img.shields.io/github/license/WyxnnEJ/Portfolio?color=9D4EDD&style=for-the-badge" alt="License" />
+  <img src="https://img.shields.io/github/stars/WyxnnEJ/Portfolio?color=9D4EDD&style=for-the-badge" alt="Stars" />
+</p>
+
 <p align="center">
   <img src="https://media.tenor.com/lcrQBLljnNcAAAAC/dark-souls-knight.gif" width="100%" />
 </p>
