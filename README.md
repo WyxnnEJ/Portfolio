@@ -21,6 +21,7 @@ This repository contains the source code for my personal portfolio. It is design
 * **Dark Mode Toggle:** Integrated local storage to remember user theme preferences.
 * **Responsive Architecture:** Fully optimized for mobile, tablet, and desktop views.
 * **Clean Logic:** Organized folder structure for assets and scripts.
+* **Fan Art Gallery:** Auto-scrolling gallery to hold fan art/images.
 
 ## Tech Stack
 * **Frontend:** HTML5, CSS3, JavaScript (ES6+)
