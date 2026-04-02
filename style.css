@@ -121,6 +121,47 @@ h1 { font-size: 4rem; margin: 0; }
 .about-text p { font-size: 1.1rem; color: var(--text-dim); line-height: 1.8; }
 .about-stats-mini { flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
+/* --- Fan Art --- */
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  background: #0b0b0b;
+  padding: 40px 0;
+}
+
+.art-scroll-container {
+  display: flex;
+  width: max-content; 
+  gap: 30px;
+  animation: scroll 30s linear infinite; 
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); } 
+}
+
+.art-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.art-scroll-container {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+
+.marquee-wrapper:hover .art-scroll-container {
+  animation-play-state: paused;
+}
+
+.art-card {
+  width: 300px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
 /* --- METRICS & STATS --- */
 .metrics { 
     display: flex; justify-content: space-around; padding: 60px 10%; 
