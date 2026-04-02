@@ -122,18 +122,32 @@ h1 { font-size: 4rem; margin: 0; }
 .about-stats-mini { flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
 /* --- Fan Art --- */
+.fan-art-section {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.fan-art-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: var(--text);
+}
+
 .marquee-wrapper {
   overflow: hidden;
   width: 100%;
   background: #0b0b0b;
   padding: 40px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .art-scroll-container {
   display: flex;
   width: max-content; 
   gap: 30px;
-  animation: scroll 30s linear infinite; 
+  padding: 0 30px;
+  animation: scroll 60s linear infinite; 
 }
 
 @keyframes scroll {
@@ -154,12 +168,43 @@ h1 { font-size: 4rem; margin: 0; }
 }
 
 .art-card {
-  width: 300px;
+  width: 240px;
+  height: 240px;
   flex-shrink: 0;
   border-radius: 15px;
   overflow: hidden;
   position: relative;
   box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  transition: 0.3s ease;
+}
+
+.art-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.art-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: var(--text);
+  padding: 12px 12px 8px;
+  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.art-card:hover .art-info {
+  opacity: 1;
+}
+
+.art-info span {
+  color: var(--purp);
+  font-weight: 600;
 }
 
 /* --- METRICS & STATS --- */
