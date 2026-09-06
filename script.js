@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Software Developer",
         "Discord Staff/Manager",
         "Red Hat Hacker",
-        "Systems Auditor",
+        "Certified Idiot",
         "Game Tester"
     ];
     let roleIndex = 0,
