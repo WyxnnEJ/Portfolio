@@ -231,14 +231,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Visit Counter ---
     const robloxGames = [
-    { elementId: 'dead-rails-visits', universeId: '7018190066', fallback: '5.8B+' },
-    { elementId: 'humankind-visits', universeId: '8107738357', fallback: '5M+' },
-    { elementId: 'aacampaign-visits', universeId: '7359962123', fallback: '1M+' }
+    { elementId: 'dead-rails-visits', universeId: '7018190066', fallback: '6.5B+' },
+    { elementId: 'humankind-visits', universeId: '8107738357', fallback: '5.1M+' },
+    { elementId: 'aacampaign-visits', universeId: '7359962123', fallback: '52.7M+' }
 ];
-
-const universeIds = robloxGames.map(g => g.universeId).join(',');
-const apiUrl = `https://games.roblox.com/v1/games?universeIds=${universeIds}`;
-const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
 
 function useVisitFallbacks() {
     robloxGames.forEach(game => {
@@ -247,24 +243,27 @@ function useVisitFallbacks() {
     });
 }
 
-fetch(proxyUrl)
+useVisitFallbacks();
+
+const visitRequestController = new AbortController();
+const visitRequestTimeout = setTimeout(() => visitRequestController.abort(), 8000);
+
+fetch('visits.json', {
+        cache: 'no-store',
+        signal: visitRequestController.signal
+    })
     .then(response => {
-        if (!response.ok) throw new Error(`Roblox API request failed: ${response.status}`);
+        if (!response.ok) throw new Error(`Visit data request failed: ${response.status}`);
         return response.json();
     })
     .then(data => {
-        if (!data || !Array.isArray(data.data)) throw new Error('Invalid Roblox API response');
-
-        const gameDataMap = {};
-        data.data.forEach(item => {
-            gameDataMap[item.id] = item.visits;
-        });
+        if (!data || typeof data !== 'object') throw new Error('Invalid visit data');
 
         robloxGames.forEach(game => {
             const targetEl = document.getElementById(game.elementId);
             if (!targetEl) return;
 
-            const rawVisits = gameDataMap[game.universeId];
+            const rawVisits = data[game.universeId];
             if (rawVisits === undefined) {
                 targetEl.innerText = game.fallback;
                 return;
@@ -285,5 +284,8 @@ fetch(proxyUrl)
     .catch(error => {
         console.error("Error fetching Roblox visits:", error);
         useVisitFallbacks();
+    })
+    .finally(() => {
+        clearTimeout(visitRequestTimeout);
     });
 });

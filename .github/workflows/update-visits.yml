@@ -1,0 +1,30 @@
+name: Update Roblox visit counts
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-visits:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Fetch Roblox visit counts
+        run: |
+          curl --fail --silent --show-error \
+            'https://games.roblox.com/v1/games?universeIds=7018190066,8107738357,7359962123' \
+            | jq '[.data[] | {key: (.id | tostring), value: .visits}] | from_entries' > visits.json
+
+      - name: Commit updated counts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add visits.json
+          git diff --cached --quiet || git commit -m 'Update Roblox visit counts'
+          git push
