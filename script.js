@@ -214,4 +214,54 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Visit Counter ---
+    const robloxGames = [
+        {
+            elementId: 'dead-rails-visits',
+            universeId: '7018190066',
+            fallback: '5.8B+'
+        },
+        {
+            elementId: 'humankind-visits',
+            universeId: '8107738357',
+            fallback: '5M+'
+        },
+        {
+            elementId: 'aacampaign-visits',
+            universeId: '7359962123', 
+            fallback: '1M+'
+        }
+    ];
+
+    robloxGames.forEach(game => {
+        const targetEl = document.getElementById(game.elementId);
+        if (!targetEl) return;
+
+        const apiUrl = `https://games.roblox.com/v1/games?universeIds=${game.universeId}`;
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
+
+        fetch(proxyUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.data && data.data.length > 0) {
+                    const rawVisits = data.data[0].visits;
+                    let formattedVisits = rawVisits;
+
+                    if (rawVisits >= 1e9) {
+                        formattedVisits = (rawVisits / 1e9).toFixed(1) + "B";
+                    } else if (rawVisits >= 1e6) {
+                        formattedVisits = (rawVisits / 1e6).toFixed(1) + "M";
+                    } else if (rawVisits >= 1e3) {
+                        formattedVisits = (rawVisits / 1e3).toFixed(1) + "K";
+                    }
+
+                    targetEl.innerText = formattedVisits;
+                }
+            })
+            .catch(error => {
+                console.error(`Error fetching visits for ${game.elementId}:`, error);
+                targetEl.innerText = game.fallback;
+            });
+    });
 });
