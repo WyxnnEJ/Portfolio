@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         modeBtn.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
 
+            if (!icon) return;
+
             if (document.body.classList.contains('light-mode')) {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
@@ -84,16 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (refreshBtn) {
             const refreshIcon = refreshBtn.querySelector('i');
-            refreshIcon.style.transform = 'rotate(360deg)';
-            setTimeout(() => {
-                refreshIcon.style.transform = 'rotate(0deg)';
-            }, 500);
+            if (refreshIcon) {
+                refreshIcon.style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    refreshIcon.style.transform = 'rotate(0deg)';
+                }, 500);
+            }
         }
     }
 
     // Initialize Quote
     displayRandomQuote();
-    document.getElementById('refresh-quote').addEventListener('click', displayRandomQuote);
+    const refreshQuoteButton = document.getElementById('refresh-quote');
+    if (refreshQuoteButton) {
+        refreshQuoteButton.addEventListener('click', displayRandomQuote);
+    }
 
     // --- Typing Animation ---
     const typingTarget = document.getElementById('typing-text');
@@ -132,15 +139,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typingTarget) type();
 
     // --- Scroll Reveal Logic ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, {
+            threshold: 0.1
         });
-    }, {
-        threshold: 0.1
-    });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } else {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+    }
 
     // --- Clipboard Logic ---
     const copyBtn = document.getElementById('copy-discord');
@@ -149,12 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const username = "Wyxn";
             const tooltip = document.getElementById('discord-tooltip');
 
+            if (!navigator.clipboard) return;
+
             navigator.clipboard.writeText(username).then(() => {
+                if (!tooltip) return;
                 tooltip.classList.add('show');
                 setTimeout(() => {
                     tooltip.classList.remove('show');
                 }, 2000);
-            });
+            }).catch(error => console.error('Unable to copy Discord username:', error));
         });
     }
 
@@ -164,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnText = document.getElementById('btn-text');
     const btnLoader = document.getElementById('btn-loader');
 
-    if (contactForm) {
+    if (contactForm && submitBtn && btnText && btnLoader) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault(); 
 
@@ -217,51 +231,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Visit Counter ---
     const robloxGames = [
-        {
-            elementId: 'dead-rails-visits',
-            universeId: '7018190066',
-            fallback: '5.8B+'
-        },
-        {
-            elementId: 'humankind-visits',
-            universeId: '8107738357',
-            fallback: '5M+'
-        },
-        {
-            elementId: 'aacampaign-visits',
-            universeId: '7359962123', 
-            fallback: '1M+'
-        }
-    ];
+    { elementId: 'dead-rails-visits', universeId: '7018190066', fallback: '5.8B+' },
+    { elementId: 'humankind-visits', universeId: '8107738357', fallback: '5M+' },
+    { elementId: 'aacampaign-visits', universeId: '7359962123', fallback: '1M+' }
+];
 
+const universeIds = robloxGames.map(g => g.universeId).join(',');
+const apiUrl = `https://games.roblox.com/v1/games?universeIds=${universeIds}`;
+const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
+
+function useVisitFallbacks() {
     robloxGames.forEach(game => {
         const targetEl = document.getElementById(game.elementId);
-        if (!targetEl) return;
+        if (targetEl) targetEl.innerText = game.fallback;
+    });
+}
 
-        const apiUrl = `https://games.roblox.com/v1/games?universeIds=${game.universeId}`;
-        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
+fetch(proxyUrl)
+    .then(response => {
+        if (!response.ok) throw new Error(`Roblox API request failed: ${response.status}`);
+        return response.json();
+    })
+    .then(data => {
+        if (!data || !Array.isArray(data.data)) throw new Error('Invalid Roblox API response');
 
-        fetch(proxyUrl)
-            .then(response => response.json())
-            .then(data => {
-                if (data && data.data && data.data.length > 0) {
-                    const rawVisits = data.data[0].visits;
-                    let formattedVisits = rawVisits;
+        const gameDataMap = {};
+        data.data.forEach(item => {
+            gameDataMap[item.id] = item.visits;
+        });
 
-                    if (rawVisits >= 1e9) {
-                        formattedVisits = (rawVisits / 1e9).toFixed(1) + "B";
-                    } else if (rawVisits >= 1e6) {
-                        formattedVisits = (rawVisits / 1e6).toFixed(1) + "M";
-                    } else if (rawVisits >= 1e3) {
-                        formattedVisits = (rawVisits / 1e3).toFixed(1) + "K";
-                    }
+        robloxGames.forEach(game => {
+            const targetEl = document.getElementById(game.elementId);
+            if (!targetEl) return;
 
-                    targetEl.innerText = formattedVisits;
-                }
-            })
-            .catch(error => {
-                console.error(`Error fetching visits for ${game.elementId}:`, error);
+            const rawVisits = gameDataMap[game.universeId];
+            if (rawVisits === undefined) {
                 targetEl.innerText = game.fallback;
-            });
+                return;
+            }
+
+            let formattedVisits = rawVisits;
+            if (rawVisits >= 1e9) {
+                formattedVisits = (rawVisits / 1e9).toFixed(1) + "B";
+            } else if (rawVisits >= 1e6) {
+                formattedVisits = (rawVisits / 1e6).toFixed(1) + "M";
+            } else if (rawVisits >= 1e3) {
+                formattedVisits = (rawVisits / 1e3).toFixed(1) + "K";
+            }
+
+            targetEl.innerText = formattedVisits;
+        });
+    })
+    .catch(error => {
+        console.error("Error fetching Roblox visits:", error);
+        useVisitFallbacks();
     });
 });
